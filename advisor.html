@@ -1,0 +1,450 @@
+<!-- REGISTRATION ADVISOR PAGE -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Registration Advisor</title>
+  <link href="Styles/reset.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+
+  <aside class="dashboard-sidebar">
+
+    <div>
+
+      <!-- PROFILE -->
+
+      <div class="student-profile">
+
+        <img src="pfp.png" class="student-pfp">
+
+        <div class="student-info">
+
+          <h2>Sarah Ahmad</h2>
+
+          <p>Computer Science</p>
+
+          <span>3rd Year</span>
+
+        </div>
+
+      </div>
+
+      <!-- MENU -->
+
+      <div class="sidebar-section">
+
+        <h4>MAIN</h4>
+
+        <a href="home.html">
+          <i class="fa-solid fa-house"></i>
+          Dashboard
+        </a>
+
+        <a href="myprogress.html">
+          <i class="fa-solid fa-chart-line"></i>
+          My Progress
+        </a>
+
+        <a href="advisor.html" class="active-link">
+          <i class="fa-solid fa-robot"></i>
+          Registration Advisor
+        </a>
+
+        <a href="catalogue.html">
+          <i class="fa-solid fa-book"></i>
+          Course Catalogue
+        </a>
+
+      </div>
+
+      <div class="sidebar-section">
+
+        <h4>SCHEDULE</h4>
+
+        <a href="calendar.html">
+          <i class="fa-solid fa-calendar"></i>
+          Shared Calendar
+        </a>
+
+        <a href="formative.html">
+          <i class="fa-solid fa-users"></i>
+          Formative Sessions
+        </a>
+
+      </div>
+
+      <div class="sidebar-section">
+
+        <h4>OTHER</h4>
+
+        <a href="notifications.html">
+          <i class="fa-solid fa-bell"></i>
+          Notifications
+        </a>
+
+        <a href="help.html">
+          <i class="fa-solid fa-circle-question"></i>
+          Help & FAQ
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- LOGO -->
+
+    <div class="sidebar-logo">
+
+      <h1>RegisCore</h1>
+
+      <p>Spring 2026</p>
+
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="advisor-main">
+
+    <!-- TOP HEADER -->
+
+    <div class="advisor-header">
+
+      <div>
+
+        <h1>Registration Advisor</h1>
+
+        <p>Automated Course Planning for Fall 2026</p>
+
+      </div>
+
+      <div class="advisor-top-stats">
+
+        <div class="advisor-mini-box">
+          <span>Credits Done</span>
+          <h3>78</h3>
+        </div>
+
+        <div class="advisor-mini-box">
+          <span>Credits Remaining</span>
+          <h3>54</h3>
+        </div>
+
+        <div class="advisor-mini-box">
+          <span>Registration Closes</span>
+          <h3>3 Days</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="advisor-content">
+
+      <!-- LEFT CHAT -->
+
+      <div class="chat-container">
+
+        <div class="chat-header">
+
+          <div class="chat-profile">
+
+            <div class="chat-avatar">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+
+            <div>
+
+              <h3>Advisor AI</h3>
+
+              <span>Online</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="chat-body">
+
+          <div class="bot-message">
+            Hello Sarah! I generated an optimized Fall 2026 schedule based on your completed courses and preferences.
+          </div>
+
+          <div class="user-message">
+            Avoid long gaps between classes.
+          </div>
+
+          <div class="bot-message">
+            Understood. Your current schedule has no gaps longer than 1 hour.
+          </div>
+
+          <div class="user-message">
+            Can I replace AI Ethics?
+          </div>
+
+          <div class="bot-message">
+            Yes — Advanced Databases is available as an alternative elective.
+          </div>
+
+        </div>
+
+        <div class="chat-input-area">
+
+          <input
+            type="text"
+            placeholder="Ask Advisor..."
+          >
+
+          <button>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE -->
+
+      <div class="generated-section">
+
+        <!-- PLAN HEADER -->
+
+        <div class="generated-top-box">
+
+          <div>
+
+            <h2>Generated Plan - Fall 2026</h2>
+
+            <p>5 courses . 14 credit hours . 0 conflicts</p>
+
+          </div>
+
+          <div class="generated-buttons">
+
+            <button class="outline-btn">
+              Export PDF
+            </button>
+
+            <button class="red-btn">
+              Edit Manually
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- SUMMARY BOXES -->
+
+        <div class="summary-grid">
+
+          <div class="summary-box">
+
+            <span>Credit Hours</span>
+
+            <h2>14</h2>
+
+            <p>Recommended 13-16</p>
+
+          </div>
+
+          <div class="summary-box">
+
+            <span>Prerequisites Met</span>
+
+            <h2>5/5</h2>
+
+            <p>All courses eligible</p>
+
+          </div>
+
+          <div class="summary-box">
+
+            <span>Schedule Conflict</span>
+
+            <h2>0</h2>
+
+            <p>No empty time</p>
+
+          </div>
+
+        </div>
+
+        <!-- GENERATED COURSES -->
+
+        <div class="schedule-box">
+
+          <div class="schedule-top">
+
+            <div>
+
+              <h2>Fall 2026 - Selected Courses</h2>
+
+              <p>Mon - Thu only (All morning slots)</p>
+
+            </div>
+
+          </div>
+
+          <!-- COURSE -->
+
+          <div class="course-row">
+
+            <div class="course-main">
+
+              <h3>Computer Networks</h3>
+
+              <span>Sun/Wed 9:00-10:30 AM · S-208</span>
+
+            </div>
+
+            <div class="course-right">
+
+              <div class="course-tag">
+                Required
+              </div>
+
+              <div class="credits-box">
+                3 CH
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- COURSE -->
+
+          <div class="course-row">
+
+            <div class="course-main">
+
+              <h3>AI Ethics</h3>
+
+              <span>Mon/Thu 11:00-12:30 PM · IT-104</span>
+
+            </div>
+
+            <div class="course-right">
+
+              <div class="course-tag">
+                Elective
+              </div>
+
+              <div class="credits-box">
+                3 CH
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- COURSE -->
+
+          <div class="course-row">
+
+            <div class="course-main">
+
+              <h3>Software Engineering II</h3>
+
+              <span>Sun/Wed 1:00-2:30 PM · S-110</span>
+
+            </div>
+
+            <div class="course-right">
+
+              <div class="course-tag">
+                Required
+              </div>
+
+              <div class="credits-box">
+                3 CH
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- COURSE -->
+
+          <div class="course-row">
+
+            <div class="course-main">
+
+              <h3>Machine Learning</h3>
+
+              <span>Tue/Thu 9:00-10:30 AM · LAB-2</span>
+
+            </div>
+
+            <div class="course-right">
+
+              <div class="course-tag">
+                Thesis Track
+              </div>
+
+              <div class="credits-box">
+                3 CH
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- COURSE -->
+
+          <div class="course-row">
+
+            <div class="course-main">
+
+              <h3>Advanced Databases</h3>
+
+              <span>Mon/Wed 2:00-3:30 PM · IT-302</span>
+
+            </div>
+
+            <div class="course-right">
+
+              <div class="course-tag">
+                Elective
+              </div>
+
+              <div class="credits-box">
+                2 CH
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

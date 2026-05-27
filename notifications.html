@@ -1,0 +1,452 @@
+<!-- NOTIFICATIONS PAGE -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Notifications</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+
+  <aside class="dashboard-sidebar">
+
+    <div>
+
+      <!-- PROFILE -->
+
+      <div class="student-profile">
+
+        <img
+          src="pfp.png"
+          class="student-pfp"
+        >
+
+        <div class="student-info">
+
+          <h2>Sarah Ahmad</h2>
+
+          <p>Computer Science</p>
+
+          <span>3rd Year</span>
+
+        </div>
+
+      </div>
+
+      <!-- MAIN -->
+
+      <div class="sidebar-section">
+
+        <h4>MAIN</h4>
+
+        <a href="home.html">
+          <i class="fa-solid fa-house"></i>
+          Dashboard
+        </a>
+
+        <a href="progress.html">
+          <i class="fa-solid fa-chart-line"></i>
+          My Progress
+        </a>
+
+        <a href="advisor.html">
+          <i class="fa-solid fa-robot"></i>
+          Registration Advisor
+        </a>
+
+        <a href="catalogue.html">
+          <i class="fa-solid fa-book"></i>
+          Course Catalogue
+        </a>
+
+      </div>
+
+      <!-- SCHEDULE -->
+
+      <div class="sidebar-section">
+
+        <h4>SCHEDULE</h4>
+
+        <a href="calendar.html">
+          <i class="fa-solid fa-calendar"></i>
+          Shared Calendar
+        </a>
+
+        <a href="formative.html">
+          <i class="fa-solid fa-users"></i>
+          Formative Sessions
+        </a>
+
+      </div>
+
+      <!-- OTHER -->
+
+      <div class="sidebar-section">
+
+        <h4>OTHER</h4>
+
+        <a
+          href="notifications.html"
+          class="active-link"
+        >
+          <i class="fa-solid fa-bell"></i>
+          Notifications
+        </a>
+
+        <a href="help.html">
+          <i class="fa-solid fa-circle-question"></i>
+          Help & FAQ
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- LOGO -->
+
+    <div class="sidebar-logo">
+
+      <h1>RegisCore</h1>
+
+      <p>Spring 2026</p>
+
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="notifications-main">
+
+    <!-- WELCOME -->
+
+    <div class="welcome-box">
+
+      <div>
+
+        <h1>Notifications Center</h1>
+
+        <p>Stay updated with all registration and academic alerts</p>
+
+      </div>
+
+      <div class="notification-area">
+
+        <div class="main-alert">
+          5 unread notifications
+        </div>
+
+        <a
+          href="notifications.html"
+          class="notification-icon"
+        >
+          <i class="fa-solid fa-bell"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- MAIN BOX -->
+
+    <div class="notifications-wrapper">
+
+      <!-- TOP -->
+
+      <div class="notifications-top">
+
+        <h2>Notification Center</h2>
+
+        <button class="red-btn">
+          Mark All As Read
+        </button>
+
+      </div>
+
+      <!-- FILTERS -->
+
+      <div class="notification-filters">
+
+        <button class="active-filter">
+          All
+        </button>
+
+        <button>
+          Unread
+        </button>
+
+        <button>
+          Action
+        </button>
+
+        <button>
+          Courses
+        </button>
+
+        <button>
+          Advisor
+        </button>
+
+      </div>
+
+      <!-- CONTENT -->
+
+      <div class="notifications-layout">
+
+        <!-- CATEGORY SIDEBAR -->
+
+        <div class="notifications-categories">
+
+          <div class="notification-category-row active-category">
+
+            <span>All Notifications</span>
+
+            <div class="notification-count">
+              18
+            </div>
+
+          </div>
+
+          <div class="notification-category-row">
+
+            <span>Unread</span>
+
+            <div class="notification-count">
+              5
+            </div>
+
+          </div>
+
+          <div class="notification-category-row">
+
+            <span>Courses</span>
+
+            <div class="notification-count">
+              7
+            </div>
+
+          </div>
+
+          <div class="notification-category-row">
+
+            <span>Registration</span>
+
+            <div class="notification-count">
+              3
+            </div>
+
+          </div>
+
+          <div class="notification-category-row">
+
+            <span>Advisor</span>
+
+            <div class="notification-count">
+              2
+            </div>
+
+          </div>
+
+          <div class="notification-category-row">
+
+            <span>Deadlines</span>
+
+            <div class="notification-count">
+              1
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- FEED -->
+
+        <div class="notifications-feed">
+
+          <!-- ROW -->
+
+          <div class="notification-feed-row unread-notification">
+
+            <div class="notification-feed-left">
+
+              <div class="notification-dot"></div>
+
+              <div>
+
+                <h3>
+                  Registration Incomplete
+                </h3>
+
+                <p>
+                  Finish selecting 3 remaining courses before registration closes.
+                </p>
+
+                <span>
+                  10 minutes ago
+                </span>
+
+              </div>
+
+            </div>
+
+            <button class="table-action-btn">
+              Go To Registration
+            </button>
+
+          </div>
+
+          <!-- ROW -->
+
+          <div class="notification-feed-row">
+
+            <div class="notification-feed-left">
+
+              <div>
+
+                <h3>
+                  GPA Updated
+                </h3>
+
+                <p>
+                  Your cumulative GPA has been recalculated for Spring 2026.
+                </p>
+
+                <span>
+                  1 hour ago
+                </span>
+
+              </div>
+
+            </div>
+
+            <button class="table-action-btn gray-btn">
+              View GPA
+            </button>
+
+          </div>
+
+          <!-- ROW -->
+
+          <div class="notification-feed-row unread-notification">
+
+            <div class="notification-feed-left">
+
+              <div class="notification-dot"></div>
+
+              <div>
+
+                <h3>
+                  Advisor Recommendation Ready
+                </h3>
+
+                <p>
+                  Your AI advisor generated a new suggested semester plan.
+                </p>
+
+                <span>
+                  Today
+                </span>
+
+              </div>
+
+            </div>
+
+            <button class="table-action-btn">
+              View Details
+            </button>
+
+          </div>
+
+          <!-- ROW -->
+
+          <div class="notification-feed-row">
+
+            <div class="notification-feed-left">
+
+              <div>
+
+                <h3>
+                  Oral Session Scheduled
+                </h3>
+
+                <p>
+                  Software Engineering oral session scheduled for Thursday 2:00 PM.
+                </p>
+
+                <span>
+                  Yesterday
+                </span>
+
+              </div>
+
+            </div>
+
+            <button class="table-action-btn gray-btn">
+              View Session
+            </button>
+
+          </div>
+
+          <!-- ROW -->
+
+          <div class="notification-feed-row">
+
+            <div class="notification-feed-left">
+
+              <div>
+
+                <h3>
+                  Waitlist Position Updated
+                </h3>
+
+                <p>
+                  You moved from position #8 to #3 in Machine Learning.
+                </p>
+
+                <span>
+                  Yesterday
+                </span>
+
+              </div>
+
+            </div>
+
+            <button class="table-action-btn">
+              Enroll Now
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

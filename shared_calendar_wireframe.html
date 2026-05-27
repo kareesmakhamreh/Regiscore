@@ -1,0 +1,355 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.shell{display:grid;grid-template-columns:190px 1fr;min-height:860px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.sidebar{background:var(--color-background-secondary);border-right:0.5px solid var(--color-border-tertiary);padding:20px 0;display:flex;flex-direction:column;gap:2px}
+.logo{padding:0 16px 20px;font-size:15px;font-weight:500;color:var(--color-text-primary);border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:8px}
+.logo span{font-size:11px;font-weight:400;color:var(--color-text-secondary);display:block;margin-top:2px}
+.nav-item{padding:8px 16px;font-size:13px;color:var(--color-text-secondary);cursor:pointer;display:flex;align-items:center;gap:8px}
+.nav-item:hover{background:var(--color-background-primary);color:var(--color-text-primary)}
+.nav-item.active{background:var(--color-background-primary);color:var(--color-text-primary);font-weight:500;border-right:2px solid #1D9E75}
+.nav-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.nav-sec{font-size:11px;color:var(--color-text-tertiary);padding:12px 16px 4px}
+.sb-footer{margin-top:auto;padding:12px 16px;border-top:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px}
+.av{width:30px;height:30px;border-radius:50%;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#185FA5;flex-shrink:0}
+
+.main{display:flex;flex-direction:column;background:var(--color-background-primary)}
+
+.cal-topbar{padding:10px 16px;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.nav-week{display:flex;align-items:center;gap:6px}
+.week-btn{width:26px;height:26px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--color-text-secondary)}
+.week-btn:hover{background:var(--color-background-secondary)}
+.week-label{font-size:14px;font-weight:500;color:var(--color-text-primary);min-width:160px;text-align:center}
+.view-seg{display:flex;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);overflow:hidden}
+.vseg-btn{font-size:12px;padding:5px 10px;cursor:pointer;color:var(--color-text-secondary);background:transparent;border:none}
+.vseg-btn.active{background:#E6F1FB;color:#0C447C;font-weight:500}
+.cal-actions{display:flex;gap:6px}
+.cal-btn{font-size:12px;padding:5px 11px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-secondary);cursor:pointer}
+.cal-btn:hover{background:var(--color-background-secondary)}
+.cal-btn.primary{background:#E1F5EE;color:#085041;border-color:#1D9E75;font-weight:500}
+
+.filter-bar{padding:8px 16px;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.filter-label{font-size:11px;color:var(--color-text-secondary)}
+.f-chip{display:flex;align-items:center;gap:5px;font-size:11px;padding:4px 10px;border-radius:20px;cursor:pointer;border:0.5px solid transparent;transition:opacity 0.15s}
+.f-chip.on{opacity:1}
+.f-chip.off{opacity:0.4}
+.f-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.sync-btn{margin-left:auto;font-size:11px;color:var(--color-text-info);cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
+
+.cal-body{display:grid;grid-template-columns:1fr 200px;flex:1}
+
+.week-view{display:flex;flex-direction:column;border-right:0.5px solid var(--color-border-tertiary)}
+.day-headers{display:grid;grid-template-columns:44px repeat(5,1fr);border-bottom:0.5px solid var(--color-border-tertiary)}
+.day-header-spacer{border-right:0.5px solid var(--color-border-tertiary)}
+.day-header{padding:8px 4px;text-align:center;border-right:0.5px solid var(--color-border-tertiary)}
+.day-header:last-child{border-right:none}
+.day-name{font-size:11px;color:var(--color-text-secondary)}
+.day-num{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-top:2px}
+.day-num.today{width:28px;height:28px;border-radius:50%;background:#E6F1FB;color:#0C447C;display:flex;align-items:center;justify-content:center;margin:2px auto 0;font-size:15px}
+
+.time-grid{display:grid;grid-template-columns:44px repeat(5,1fr);flex:1}
+.time-col{border-right:0.5px solid var(--color-border-tertiary)}
+.time-slot{height:52px;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:flex-start;justify-content:flex-end;padding:3px 6px 0 0}
+.time-label{font-size:10px;color:var(--color-text-tertiary)}
+.day-col{border-right:0.5px solid var(--color-border-tertiary);position:relative}
+.day-col:last-child{border-right:none}
+.hour-line{height:52px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.event{border-radius:4px;padding:4px 6px;font-size:11px;cursor:pointer;transition:opacity 0.12s;overflow:hidden;position:relative}
+.event:hover{opacity:0.85}
+.event-title{font-weight:500;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.event-sub{font-size:10px;opacity:0.85;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev-lec{background:#E6F1FB;color:#0C447C;border-left:2px solid #185FA5;border-radius:0 4px 4px 0}
+.ev-oral{background:#FCEBEB;color:#791F1F;border-left:2px solid #E24B4A;border-radius:0 4px 4px 0}
+.ev-deadline{background:#FAEEDA;color:#633806;border-left:2px solid #EF9F27;border-radius:0 4px 4px 0}
+.ev-office{background:#E1F5EE;color:#085041;border-left:2px solid #1D9E75;border-radius:0 4px 4px 0}
+.ev-holiday{background:#F1EFE8;color:#444441;border-left:2px solid #888780;border-radius:0 4px 4px 0}
+.today-line{position:absolute;left:0;right:0;height:1.5px;background:#E24B4A;z-index:2}
+.today-dot{position:absolute;left:-4px;width:8px;height:8px;border-radius:50%;background:#E24B4A;margin-top:-3px}
+
+.right-col{display:flex;flex-direction:column;background:var(--color-background-secondary)}
+
+.mini-cal{padding:12px 14px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.mini-cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mini-month{font-size:12px;font-weight:500;color:var(--color-text-primary)}
+.mini-nav{display:flex;gap:4px}
+.mini-nav-btn{width:18px;height:18px;border-radius:4px;background:transparent;border:none;color:var(--color-text-secondary);cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center}
+.mini-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px}
+.mini-day-name{font-size:9px;color:var(--color-text-tertiary);text-align:center;padding:2px 0}
+.mini-day{font-size:11px;text-align:center;padding:3px 1px;border-radius:4px;cursor:pointer;color:var(--color-text-secondary)}
+.mini-day:hover{background:var(--color-background-primary)}
+.mini-day.today{background:#E6F1FB;color:#0C447C;font-weight:500;border-radius:50%}
+.mini-day.has-event{position:relative}
+.mini-day.has-event::after{content:'';position:absolute;bottom:1px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:#378ADD}
+.mini-day.in-week{background:var(--color-background-primary);color:var(--color-text-primary)}
+
+.agenda-col{padding:12px 14px;flex:1;display:flex;flex-direction:column;gap:10px;overflow-y:auto}
+.agenda-title{font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.agenda-item{padding:8px 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary);cursor:pointer}
+.agenda-item:hover{border-color:var(--color-border-secondary)}
+.agenda-item.selected{border-color:#185FA5;background:#E6F1FB}
+.ag-time{font-size:10px;color:var(--color-text-tertiary);margin-bottom:3px}
+.ag-title{font-size:12px;font-weight:500;color:var(--color-text-primary)}
+.ag-sub{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.ag-badge{display:inline-block;font-size:10px;padding:1px 6px;border-radius:10px;margin-top:4px}
+
+.event-detail{border-top:0.5px solid var(--color-border-tertiary);padding:12px 14px;background:var(--color-background-primary)}
+.ed-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.ed-title{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.ed-type{font-size:10px;padding:2px 8px;border-radius:10px;margin-top:3px;display:inline-block}
+.ed-close{font-size:16px;color:var(--color-text-tertiary);cursor:pointer;line-height:1}
+.ed-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px}
+.ed-icon{width:14px;flex-shrink:0;margin-top:1px}
+.ed-text{font-size:11px;color:var(--color-text-secondary);line-height:1.4}
+.ed-actions{display:flex;gap:6px;margin-top:10px}
+.ed-btn{flex:1;font-size:11px;padding:6px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-secondary);cursor:pointer;text-align:center}
+.ed-btn.primary{background:#FCEBEB;color:#791F1F;border-color:#E24B4A;font-weight:500}
+</style>
+
+<h2 class="sr-only">Shared calendar wireframe showing a week view with lectures, oral exams, deadlines, and office hours across all stakeholder types, with a mini calendar and agenda in the right sidebar</h2>
+
+<div class="shell">
+  <div class="sidebar">
+    <div class="logo">UniScheduler<span>Spring 2026</span></div>
+    <div class="nav-sec">Main</div>
+    <div class="nav-item" onclick="sendPrompt('Tell me what the Student Dashboard page should include')"><div class="nav-dot" style="background:#378ADD"></div>Dashboard</div>
+    <div class="nav-item" onclick="sendPrompt('Tell me what the Registration and Progress page should include')"><div class="nav-dot" style="background:#378ADD"></div>My progress</div>
+    <div class="nav-item" onclick="sendPrompt('Tell me what the AI Registration Advisor page should include')"><div class="nav-dot" style="background:#EF9F27"></div>Registration advisor</div>
+    <div class="nav-item" onclick="sendPrompt('Tell me what the Course Catalog page should include')"><div class="nav-dot" style="background:#378ADD"></div>Course catalog</div>
+    <div class="nav-sec">Schedule</div>
+    <div class="nav-item active"><div class="nav-dot" style="background:#1D9E75"></div>Shared calendar</div>
+    <div class="nav-item"><div class="nav-dot" style="background:var(--color-border-secondary)"></div>Oral sessions</div>
+    <div class="nav-sec">Other</div>
+    <div class="nav-item"><div class="nav-dot" style="background:#D85A30"></div>Notifications<span style="margin-left:auto;font-size:10px;background:#FCEBEB;color:#791F1F;padding:1px 6px;border-radius:10px">3</span></div>
+    <div class="nav-item"><div class="nav-dot" style="background:var(--color-border-secondary)"></div>Help &amp; FAQ</div>
+    <div class="sb-footer">
+      <div class="av">SA</div>
+      <div>
+        <div style="font-size:12px;font-weight:500;color:var(--color-text-primary)">Sara Al-Ahmad</div>
+        <div style="font-size:11px;color:var(--color-text-secondary)">CS · Year 3</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="cal-topbar">
+      <div class="nav-week">
+        <div class="week-btn"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M6.5 2L3.5 5l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="week-label">Apr 21 – Apr 25, 2026</div>
+        <div class="week-btn"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3.5 2L6.5 5l-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="week-btn" style="margin-left:4px;font-size:11px;width:auto;padding:0 8px">Today</div>
+      </div>
+      <div class="view-seg">
+        <div class="vseg-btn">Day</div>
+        <div class="vseg-btn active">Week</div>
+        <div class="vseg-btn">Month</div>
+        <div class="vseg-btn">Semester</div>
+      </div>
+      <div class="cal-actions">
+        <div class="cal-btn">Export</div>
+        <div class="cal-btn primary">Sync calendar</div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <span class="filter-label">Show:</span>
+      <div class="f-chip on" style="background:#E6F1FB;border-color:#B5D4F4"><div class="f-dot" style="background:#185FA5"></div><span style="color:#0C447C">Lectures</span></div>
+      <div class="f-chip on" style="background:#FCEBEB;border-color:#F7C1C1"><div class="f-dot" style="background:#E24B4A"></div><span style="color:#791F1F">Oral exams</span></div>
+      <div class="f-chip on" style="background:#FAEEDA;border-color:#FAC775"><div class="f-dot" style="background:#EF9F27"></div><span style="color:#633806">Deadlines</span></div>
+      <div class="f-chip on" style="background:#E1F5EE;border-color:#9FE1CB"><div class="f-dot" style="background:#1D9E75"></div><span style="color:#085041">Office hours</span></div>
+      <div class="f-chip off" style="background:var(--color-background-secondary);border-color:var(--color-border-tertiary)"><div class="f-dot" style="background:#888780"></div><span style="color:var(--color-text-secondary)">Holidays</span></div>
+      <div class="sync-btn">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7a5 5 0 0 1 9.5-2M12 7a5 5 0 0 1-9.5 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M11.5 3V5.5H9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 11V8.5H5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Sync to Google Calendar
+      </div>
+    </div>
+
+    <div class="cal-body">
+      <div class="week-view">
+        <div class="day-headers">
+          <div class="day-header-spacer"></div>
+          <div class="day-header"><div class="day-name">Mon</div><div class="day-num">21</div></div>
+          <div class="day-header"><div class="day-name">Tue</div><div class="day-num">22</div></div>
+          <div class="day-header"><div class="day-name">Wed</div><div class="day-num today">23</div></div>
+          <div class="day-header"><div class="day-name">Thu</div><div class="day-num">24</div></div>
+          <div class="day-header"><div class="day-name">Fri</div><div class="day-num">25</div></div>
+        </div>
+        <div class="time-grid">
+          <div class="time-col">
+            <div class="time-slot"><span class="time-label">8 AM</span></div>
+            <div class="time-slot"><span class="time-label">9 AM</span></div>
+            <div class="time-slot"><span class="time-label">10 AM</span></div>
+            <div class="time-slot"><span class="time-label">11 AM</span></div>
+            <div class="time-slot"><span class="time-label">12 PM</span></div>
+            <div class="time-slot"><span class="time-label">1 PM</span></div>
+            <div class="time-slot"><span class="time-label">2 PM</span></div>
+            <div class="time-slot"><span class="time-label">3 PM</span></div>
+            <div class="time-slot"><span class="time-label">4 PM</span></div>
+            <div class="time-slot"><span class="time-label">5 PM</span></div>
+          </div>
+
+          <div class="day-col">
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div style="padding:2px 3px"><div class="event ev-lec" style="height:98px"><div class="event-title">Computer Networks</div><div class="event-sub">CS-411 · Hall B</div><div class="event-sub">9:00–10:30 AM</div></div></div>
+            <div class="hour-line"></div>
+            <div style="padding:2px 3px"><div class="event ev-lec" style="height:98px"><div class="event-title">Software Security</div><div class="event-sub">CS-445 · Lab 2</div><div class="event-sub">10:30 AM–12:00</div></div></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+          </div>
+
+          <div class="day-col">
+            <div class="hour-line"></div>
+            <div style="padding:2px 3px"><div class="event ev-lec" style="height:98px"><div class="event-title">Database Systems</div><div class="event-sub">CS-422 · Hall A</div><div class="event-sub">9:00–10:30 AM</div></div></div>
+            <div class="hour-line"></div>
+            <div style="padding:2px 3px"><div class="event ev-lec" style="height:98px"><div class="event-title">Software Eng. Lab</div><div class="event-sub">CS-432 · Lab 1</div><div class="event-sub">11:00 AM–12:30</div></div></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div style="padding:2px 3px"><div class="event ev-office" style="height:48px"><div class="event-title">Dr. Khalil office hrs</div><div class="event-sub">2:00–3:00 PM</div></div></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+          </div>
+
+          <div class="day-col" style="position:relative">
+            <div class="today-line" style="top:183px"><div class="today-dot"></div></div>
+            <div class="hour-line"></div>
+            <div style="padding:2px 3px"><div class="event ev-lec" style="height:98px"><div class="event-title">Computer Networks</div><div class="event-sub">CS-411 · Hall B</div><div class="event-sub">9:00–10:30 AM</div></div></div>
+            <div class="hour-line"></div>
+            <div style="padding:2px 3px"><div class="event ev-lec" style="height:98px"><div class="event-title">Software Security</div><div class="event-sub">CS-445 · Lab 2</div><div class="event-sub">10:30 AM–12:00</div></div></div>
+            <div class="hour-line"></div>
+            <div style="padding:2px 3px"><div class="event ev-deadline" style="height:48px"><div class="event-title">Registration deadline</div><div class="event-sub">Apr 27, 11:59 PM</div></div></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+          </div>
+
+          <div class="day-col">
+            <div class="hour-line"></div>
+            <div style="padding:2px 3px"><div class="event ev-oral selected-event" style="height:98px;background:#FCEBEB;border-left:2px solid #E24B4A;border-radius:0 4px 4px 0"><div class="event-title" style="color:#791F1F">Oral exam — DB Systems</div><div class="event-sub" style="color:#A32D2D">CS-422 · Room B-204</div><div class="event-sub" style="color:#A32D2D">10:00–10:30 AM</div></div></div>
+            <div class="hour-line"></div>
+            <div style="padding:2px 3px"><div class="event ev-lec" style="height:98px"><div class="event-title">Software Eng. Lab</div><div class="event-sub">CS-432 · Lab 1</div><div class="event-sub">11:00 AM–12:30</div></div></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+          </div>
+
+          <div class="day-col">
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+            <div class="hour-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="mini-cal">
+          <div class="mini-cal-header">
+            <span class="mini-month">April 2026</span>
+            <div class="mini-nav">
+              <button class="mini-nav-btn">‹</button>
+              <button class="mini-nav-btn">›</button>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div class="mini-day-name">S</div><div class="mini-day-name">M</div><div class="mini-day-name">T</div><div class="mini-day-name">W</div><div class="mini-day-name">T</div><div class="mini-day-name">F</div><div class="mini-day-name">S</div>
+            <div class="mini-day"></div>
+            <div class="mini-day"></div>
+            <div class="mini-day">1</div><div class="mini-day">2</div><div class="mini-day has-event">3</div><div class="mini-day">4</div><div class="mini-day">5</div>
+            <div class="mini-day">6</div><div class="mini-day has-event">7</div><div class="mini-day">8</div><div class="mini-day has-event">9</div><div class="mini-day">10</div><div class="mini-day">11</div><div class="mini-day">12</div>
+            <div class="mini-day">13</div><div class="mini-day has-event">14</div><div class="mini-day">15</div><div class="mini-day">16</div><div class="mini-day has-event">17</div><div class="mini-day">18</div><div class="mini-day">19</div>
+            <div class="mini-day">20</div><div class="mini-day in-week">21</div><div class="mini-day in-week">22</div><div class="mini-day in-week today">23</div><div class="mini-day in-week">24</div><div class="mini-day in-week">25</div><div class="mini-day">26</div>
+            <div class="mini-day">27</div><div class="mini-day has-event">28</div><div class="mini-day">29</div><div class="mini-day">30</div>
+          </div>
+        </div>
+
+        <div class="agenda-col">
+          <div class="agenda-title">Today — Wed Apr 23</div>
+
+          <div class="agenda-item">
+            <div class="ag-time">9:00 – 10:30 AM</div>
+            <div class="ag-title">Computer Networks</div>
+            <div class="ag-sub">Hall B · Dr. Omar Farouk</div>
+            <span class="ag-badge" style="background:#E6F1FB;color:#0C447C">Lecture</span>
+          </div>
+
+          <div class="agenda-item">
+            <div class="ag-time">10:30 AM – 12:00</div>
+            <div class="ag-title">Software Security</div>
+            <div class="ag-sub">Lab 2 · Dr. Lina Aoun</div>
+            <span class="ag-badge" style="background:#E6F1FB;color:#0C447C">Lecture</span>
+          </div>
+
+          <div class="agenda-item selected">
+            <div class="ag-time">All day reminder</div>
+            <div class="ag-title">Registration deadline</div>
+            <div class="ag-sub">Closes Apr 27 · 3 courses pending</div>
+            <span class="ag-badge" style="background:#FAEEDA;color:#633806">Deadline</span>
+          </div>
+
+          <div style="margin-top:4px">
+            <div class="agenda-title">Tomorrow — Thu Apr 24</div>
+          </div>
+
+          <div class="agenda-item">
+            <div class="ag-time">10:00 – 10:30 AM</div>
+            <div class="ag-title">Oral exam — Database Systems</div>
+            <div class="ag-sub">Room B-204 · Dr. Hana Khalil</div>
+            <span class="ag-badge" style="background:#FCEBEB;color:#791F1F">Oral exam</span>
+          </div>
+
+          <div class="agenda-item">
+            <div class="ag-time">11:00 AM – 12:30</div>
+            <div class="ag-title">Software Eng. Lab</div>
+            <div class="ag-sub">Lab 1 · Dr. Rami Nassar</div>
+            <span class="ag-badge" style="background:#E6F1FB;color:#0C447C">Lecture</span>
+          </div>
+        </div>
+
+        <div class="event-detail">
+          <div class="ed-header">
+            <div>
+              <div class="ed-title">Oral exam — Database Systems</div>
+              <span class="ed-type" style="background:#FCEBEB;color:#791F1F">Oral exam · CS-422</span>
+            </div>
+            <div class="ed-close">×</div>
+          </div>
+          <div class="ed-row">
+            <svg class="ed-icon" width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="10" rx="1.5" stroke="var(--color-text-tertiary)" stroke-width="1.1"/><path d="M4 2V1M10 2V1M1 6h12" stroke="var(--color-text-tertiary)" stroke-width="1.1" stroke-linecap="round"/></svg>
+            <span class="ed-text">Thursday, Apr 24 · 10:00 – 10:30 AM</span>
+          </div>
+          <div class="ed-row">
+            <svg class="ed-icon" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1a4 4 0 0 1 4 4c0 3-4 8-4 8S3 8 3 5a4 4 0 0 1 4-4z" stroke="var(--color-text-tertiary)" stroke-width="1.1"/><circle cx="7" cy="5" r="1.3" fill="var(--color-text-tertiary)"/></svg>
+            <span class="ed-text">Room B-204, Building B</span>
+          </div>
+          <div class="ed-row">
+            <svg class="ed-icon" width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="var(--color-text-tertiary)" stroke-width="1.1"/><path d="M2 13c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="var(--color-text-tertiary)" stroke-width="1.1" stroke-linecap="round"/></svg>
+            <span class="ed-text">Dr. Hana Khalil · Examiner</span>
+          </div>
+          <div class="ed-row">
+            <svg class="ed-icon" width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="var(--color-text-tertiary)" stroke-width="1.1"/><path d="M7 4v3.5l2 1.5" stroke="var(--color-text-tertiary)" stroke-width="1.1" stroke-linecap="round"/></svg>
+            <span class="ed-text">Slot confirmed · 30 minutes</span>
+          </div>
+          <div class="ed-actions">
+            <div class="ed-btn">Add to device cal</div>
+            <div class="ed-btn primary">Request reschedule</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<p style="font-size:11px;color:var(--color-text-tertiary);margin-top:8px;text-align:center">Click any nav item to explore another page</p>

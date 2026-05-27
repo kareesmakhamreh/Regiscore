@@ -1,0 +1,481 @@
+<!-- HOME PAGE -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Dashboard</title>
+    <link href="Styles/reset.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ICONS -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+
+  <aside class="dashboard-sidebar">
+
+    <div>
+
+      <!-- PROFILE -->
+
+      <div class="student-profile">
+
+        <img
+          src="pfp.png"
+          class="student-pfp"
+        >
+
+        <div class="student-info">
+
+          <h2>Sarah Ahmad</h2>
+
+          <p>Computer Science</p>
+
+          <span>3rd Year</span>
+
+        </div>
+
+      </div>
+
+      <!-- MAIN -->
+
+      <div class="sidebar-section">
+
+        <h4>MAIN</h4>
+
+        <a
+          href="home.html"
+          class="active-link"
+        >
+          <i class="fa-solid fa-house"></i>
+          Dashboard
+        </a>
+
+        <a href="myprogress.html">
+          <i class="fa-solid fa-chart-line"></i>
+          My Progress
+        </a>
+
+        <a href="advisor.html">
+          <i class="fa-solid fa-robot"></i>
+          Registration Advisor
+        </a>
+
+        <a href="catalogue.html">
+          <i class="fa-solid fa-book"></i>
+          Course Catalogue
+        </a>
+
+      </div>
+
+      <!-- SCHEDULE -->
+
+      <div class="sidebar-section">
+
+        <h4>SCHEDULE</h4>
+
+        <a href="calendar.html">
+          <i class="fa-solid fa-calendar"></i>
+          Shared Calendar
+        </a>
+
+        <a href="formative.html">
+          <i class="fa-solid fa-users"></i>
+          Formative Sessions
+        </a>
+
+      </div>
+
+      <!-- OTHER -->
+
+      <div class="sidebar-section">
+
+        <h4>OTHER</h4>
+
+        <a href="notifications.html">
+          <i class="fa-solid fa-bell"></i>
+          Notifications
+        </a>
+
+        <a href="help.html">
+          <i class="fa-solid fa-circle-question"></i>
+          Help & FAQ
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- LOGO -->
+
+    <div class="sidebar-logo">
+
+      <h1>RegisCore</h1>
+
+      <p>Spring 2026</p>
+
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="dashboard-main">
+
+    <!-- WELCOME -->
+
+    <div class="welcome-box">
+
+      <div>
+
+        <h1>Good Morning, Sarah</h1>
+
+        <p>Tuesday, May 26 2026</p>
+
+      </div>
+
+      <div class="notification-area">
+
+        <div class="main-alert">
+          Registration closes in 3 days
+        </div>
+
+        <a
+          href="notifications.html"
+          class="notification-icon"
+        >
+          <i class="fa-solid fa-bell"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats-grid">
+
+      <!-- CARD -->
+
+      <div class="stat-card">
+
+        <div>
+
+          <h3>Credits Completed</h3>
+
+          <p>78</p>
+
+          <div class="stat-progress-info">
+            out of 135 required
+          </div>
+
+        </div>
+
+        <div class="stat-progress-bg">
+
+          <div
+            class="stat-progress-fill"
+            style="width:59%"
+          ></div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="stat-card">
+
+        <div>
+
+          <h3>Current GPA</h3>
+
+          <p>3.4</p>
+
+          <div class="stat-progress-info">
+            out of 4.0 cumulative
+          </div>
+
+        </div>
+
+        <div class="stat-progress-bg">
+
+          <div
+            class="stat-progress-fill"
+            style="width:68%"
+          ></div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="stat-card">
+
+        <div>
+
+          <h3>Courses This Semester</h3>
+
+          <p>6</p>
+
+          <div class="stat-progress-info">
+            15 credit hours enrolled
+          </div>
+
+        </div>
+
+        <div class="stat-progress-bg">
+
+          <div
+            class="stat-progress-fill"
+            style="width:82%"
+          ></div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="stat-card">
+
+        <div>
+
+          <h3>Upcoming Oral Sessions</h3>
+
+          <p>2</p>
+
+          <div class="stat-progress-info">
+            scheduled this week
+          </div>
+
+        </div>
+
+        <div class="stat-progress-bg">
+
+          <div
+            class="stat-progress-fill"
+            style="width:92%"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- LOWER GRID -->
+
+    <div class="bottom-grid">
+
+      <!-- UPCOMING -->
+
+      <div class="large-card">
+
+        <h2>Upcoming Sessions</h2>
+
+        <!-- SESSION -->
+
+        <div class="session-row">
+
+          <div class="session-left">
+
+            <div class="session-time-box">
+              2h Left
+            </div>
+
+            <div>
+
+              <h3>AI Fundamentals</h3>
+
+              <span>Sunday · 10:00 AM</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- SESSION -->
+
+        <div class="session-row">
+
+          <div class="session-left">
+
+            <div class="session-time-box">
+              Tomorrow
+            </div>
+
+            <div>
+
+              <h3>Database Systems</h3>
+
+              <span>Monday · 1:00 PM</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- SESSION -->
+
+        <div class="session-row">
+
+          <div class="session-left">
+
+            <div class="session-time-box">
+              Wed
+            </div>
+
+            <div>
+
+              <h3>Software Engineering</h3>
+
+              <span>Wednesday · 11:00 AM</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- SESSION -->
+
+        <div class="session-row">
+
+          <div class="session-left">
+
+            <div class="session-time-box">
+              Thu
+            </div>
+
+            <div>
+
+              <h3>Machine Learning Oral</h3>
+
+              <span>Thursday · 2:00 PM</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- PROGRESS -->
+
+      <div class="large-card">
+
+        <h2>Degree Progress</h2>
+
+        <div class="progress-layout">
+
+          <!-- LEFT -->
+
+          <div class="progress-circle">
+
+            <div class="circle-inner">
+              78%
+            </div>
+
+          </div>
+
+          <!-- RIGHT -->
+
+          <div class="progress-bars">
+
+            <!-- ITEM -->
+
+            <div class="progress-item">
+
+              <div class="progress-title">
+                Major Courses
+              </div>
+
+              <div class="progress-bar-bg">
+
+                <div
+                  class="progress-fill"
+                  style="width:75%"
+                ></div>
+
+              </div>
+
+            </div>
+
+            <!-- ITEM -->
+
+            <div class="progress-item">
+
+              <div class="progress-title">
+                Electives
+              </div>
+
+              <div class="progress-bar-bg">
+
+                <div
+                  class="progress-fill"
+                  style="width:60%"
+                ></div>
+
+              </div>
+
+            </div>
+
+            <!-- ITEM -->
+
+            <div class="progress-item">
+
+              <div class="progress-title">
+                General Requirements
+              </div>
+
+              <div class="progress-bar-bg">
+
+                <div
+                  class="progress-fill"
+                  style="width:100%"
+                ></div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

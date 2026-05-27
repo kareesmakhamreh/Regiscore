@@ -1,0 +1,383 @@
+<!-- FORMATIVE SESSIONS PAGE -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Formative Sessions</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+
+  <aside class="dashboard-sidebar">
+
+    <div>
+
+      <!-- PROFILE -->
+
+      <div class="student-profile">
+
+        <img
+          src="pfp.png"
+          class="student-pfp"
+        >
+
+        <div class="student-info">
+
+          <h2>Sarah Ahmad</h2>
+
+          <p>Computer Science</p>
+
+          <span>3rd Year</span>
+
+        </div>
+
+      </div>
+
+      <!-- MAIN -->
+
+      <div class="sidebar-section">
+
+        <h4>MAIN</h4>
+
+        <a href="home.html">
+          <i class="fa-solid fa-house"></i>
+          Dashboard
+        </a>
+
+        <a href="progress.html">
+          <i class="fa-solid fa-chart-line"></i>
+          My Progress
+        </a>
+
+        <a href="advisor.html">
+          <i class="fa-solid fa-robot"></i>
+          Registration Advisor
+        </a>
+
+        <a href="catalogue.html">
+          <i class="fa-solid fa-book"></i>
+          Course Catalogue
+        </a>
+
+      </div>
+
+      <!-- SCHEDULE -->
+
+      <div class="sidebar-section">
+
+        <h4>SCHEDULE</h4>
+
+        <a href="calendar.html">
+          <i class="fa-solid fa-calendar"></i>
+          Shared Calendar
+        </a>
+
+        <a
+          href="formative.html"
+          class="active-link"
+        >
+          <i class="fa-solid fa-users"></i>
+          Formative Sessions
+        </a>
+
+      </div>
+
+      <!-- OTHER -->
+
+      <div class="sidebar-section">
+
+        <h4>OTHER</h4>
+
+        <a href="notifications.html">
+          <i class="fa-solid fa-bell"></i>
+          Notifications
+        </a>
+
+        <a href="help.html">
+          <i class="fa-solid fa-circle-question"></i>
+          Help & FAQ
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- LOGO -->
+
+    <div class="sidebar-logo">
+
+      <h1>RegisCore</h1>
+
+      <p>Spring 2026</p>
+
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="dashboard-main">
+
+    <!-- TOP -->
+
+    <div class="welcome-box">
+
+      <div>
+
+        <h1>Formative Sessions</h1>
+
+        <p>
+          Book and manage oral and formative sessions with instructors
+        </p>
+
+      </div>
+
+      <div class="notification-area">
+
+        <div class="main-alert">
+          12 sessions available this week
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FILTERS -->
+
+    <div class="formative-top-bar">
+
+      <button class="active-filter">
+        All Courses
+      </button>
+
+      <button>
+        Available Today
+      </button>
+
+      <button>
+        Requested
+      </button>
+
+      <button>
+        Upcoming
+      </button>
+
+    </div>
+
+    <!-- SESSION BOX -->
+
+    <div class="formative-container">
+
+      <!-- SESSION ROW -->
+
+      <div class="formative-card">
+
+        <div class="formative-left">
+
+          <h2>Computer Networks</h2>
+
+          <p>
+            Dr. Ahmad Khaled
+          </p>
+
+          <span>
+            Building C • Room 402
+          </span>
+
+        </div>
+
+        <div class="formative-middle">
+
+          <div class="slot-box">
+            Sunday • 10:00 AM
+          </div>
+
+          <div class="slot-box">
+            Monday • 12:30 PM
+          </div>
+
+          <div class="slot-box">
+            Wednesday • 9:00 AM
+          </div>
+
+        </div>
+
+        <div class="formative-right">
+
+          <button class="outline-btn">
+            View Details
+          </button>
+
+          <button class="red-btn">
+            Request Session
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- SESSION ROW -->
+
+      <div class="formative-card">
+
+        <div class="formative-left">
+
+          <h2>Artificial Intelligence</h2>
+
+          <p>
+            Dr. Lina Samir
+          </p>
+
+          <span>
+            Engineering Building • Lab 12
+          </span>
+
+        </div>
+
+        <div class="formative-middle">
+
+          <div class="slot-box">
+            Tuesday • 1:00 PM
+          </div>
+
+          <div class="slot-box">
+            Thursday • 11:00 AM
+          </div>
+
+        </div>
+
+        <div class="formative-right">
+
+          <button class="outline-btn">
+            View Details
+          </button>
+
+          <button class="red-btn">
+            Request Session
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- SESSION ROW -->
+
+      <div class="formative-card">
+
+        <div class="formative-left">
+
+          <h2>Database Systems</h2>
+
+          <p>
+            Dr. Omar Hasan
+          </p>
+
+          <span>
+            IT Building • Room 208
+          </span>
+
+        </div>
+
+        <div class="formative-middle">
+
+          <div class="slot-box">
+            Sunday • 2:00 PM
+          </div>
+
+          <div class="slot-box">
+            Tuesday • 10:00 AM
+          </div>
+
+          <div class="slot-box">
+            Thursday • 3:00 PM
+          </div>
+
+        </div>
+
+        <div class="formative-right">
+
+          <button class="outline-btn">
+            View Details
+          </button>
+
+          <button class="red-btn">
+            Request Session
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- SESSION ROW -->
+
+      <div class="formative-card">
+
+        <div class="formative-left">
+
+          <h2>Software Engineering</h2>
+
+          <p>
+            Dr. Noor Ibrahim
+          </p>
+
+          <span>
+            Building A • Room 115
+          </span>
+
+        </div>
+
+        <div class="formative-middle">
+
+          <div class="slot-box">
+            Monday • 9:30 AM
+          </div>
+
+          <div class="slot-box">
+            Wednesday • 1:00 PM
+          </div>
+
+        </div>
+
+        <div class="formative-right">
+
+          <button class="outline-btn">
+            View Details
+          </button>
+
+          <button class="red-btn">
+            Request Session
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
