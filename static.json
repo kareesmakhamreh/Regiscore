@@ -1,0 +1,1 @@
+{ "root": ".", "clean_urls": true, "routes": { "/": "Index.html" } }
