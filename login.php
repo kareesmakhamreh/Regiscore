@@ -30,13 +30,13 @@
 
       <h2>Welcome Back</h2>
 
-      <form>
+      <form id="loginForm" action="process_login.php" method="POST">
 
         <label>Student ID</label>
-        <input type="text" placeholder="Enter Student ID">
+        <input type="text" name="student_id" placeholder="Enter Student ID">
 
         <label>Password</label>
-        <input type="password" placeholder="Enter Password">
+        <input type="password" name="password" placeholder="Enter Password">
 
       </form>
 
@@ -45,7 +45,7 @@
     <!-- BOTTOM SECTION -->
     <div class="login-bottom">
 
-      <button type="submit">
+      <button type="submit" form="loginForm">
         Login
       </button>
 
