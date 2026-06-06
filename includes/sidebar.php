@@ -3,7 +3,7 @@
 <div class="student-profile">
 
 <img
-src="assets/pfp.png"
+src="pfp.png"
 class="student-pfp"
 >
 
