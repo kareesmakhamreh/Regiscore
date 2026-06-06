@@ -1,2 +1,0 @@
-# Regiscore
-Modified University Website
