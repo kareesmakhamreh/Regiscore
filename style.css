@@ -33,6 +33,14 @@
   font-family: 'Poppins', Arial, sans-serif;
 }
 
+body,
+input,
+button,
+select,
+textarea {
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
 /* BODY */
 
 body {
