@@ -86,7 +86,7 @@ $courses = $conn->query("SELECT * FROM courses ORDER BY FIELD(category,'Universi
           Dashboard
         </a>
 
-        <a href="myprogress.html">
+        <a href="myprogress.php">
           <i class="fa-solid fa-chart-line"></i>
           My Progress
         </a>
