@@ -26,7 +26,7 @@ Pearson BTEC-based. Each course is an HNC (Higher National Certificate), HND
 DEGREE RULES
 - Total to graduate: 135 credit hours = 27 University + 21 College + 87 Department
   (the 87 includes 9 CH of department electives).
-- Normal load is 15-19 credit hours per semester.
+- Normal load is 15-18 credit hours per semester. (minimum 12, maximum 18, 21 with approval for graduating students)
 - A course may be taken only when ALL its prerequisites have been passed.
 - "Corequisite" means it may be taken in the SAME semester as the linked course.
 - HNC Training (12 CH) requires >= 85 completed credit hours. HND Training (6 CH)
