@@ -132,6 +132,22 @@ while ($course = $allRes->fetch_assoc()) {
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   >
 
+  <!-- SCREEN: hide the print-only header on the normal page -->
+  <style>
+    .print-only-header { display: none; }
+  </style>
+
+  <!-- PRINT / PDF ONLY: never affects the on-screen page -->
+  <style media="print">
+    @page { margin: 1.5cm; }
+    .dashboard-sidebar, .red-btn, .export-btn, .progress-mini-sidebar { display: none !important; }
+    .progress-main { padding: 0 !important; }
+    .dashboard-layout { display: block !important; }
+    .progress-content-card { display: block !important; page-break-inside: avoid; margin-bottom: 20px; }
+    .print-only-header { display: block !important; text-align: center; margin-bottom: 20px; }
+    .progress-table tr { page-break-inside: avoid; }
+  </style>
+
 </head>
 
 <body>
@@ -250,13 +266,31 @@ while ($course = $allRes->fetch_assoc()) {
 
   <main class="progress-main">
 
+    <!-- PRINT-ONLY HEADER -->
+
+    <div class="print-only-header">
+
+      <h1><?= htmlspecialchars($student['first_name'] . " " . $student['last_name']) ?></h1>
+
+      <h2>Academic Progress Report</h2>
+
+      <p>Student ID: <?= htmlspecialchars($student['student_id']) ?></p>
+
+      <p>GPA: <?= htmlspecialchars(number_format($gpa, 2)) ?></p>
+
+      <p>Credits: <?= htmlspecialchars($totalCompleted . "/135") ?></p>
+
+      <p><?= htmlspecialchars(date('F j, Y')) ?></p>
+
+    </div>
+
     <!-- TOP HEADER -->
 
     <div class="progress-header">
 
       <h1>My Progress</h1>
 
-      <button class="red-btn">
+      <button class="red-btn" onclick="window.print()">
         Export Progress
       </button>
 
@@ -482,7 +516,7 @@ while ($course = $allRes->fetch_assoc()) {
 
           </table>
 
-          <button class="red-btn export-btn">
+          <button class="red-btn export-btn" onclick="window.print()">
             Export PDF
           </button>
 
@@ -536,7 +570,7 @@ while ($course = $allRes->fetch_assoc()) {
 
           </table>
 
-          <button class="red-btn export-btn">
+          <button class="red-btn export-btn" onclick="window.print()">
             Export PDF
           </button>
 
