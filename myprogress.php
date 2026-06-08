@@ -218,7 +218,7 @@ while ($course = $allRes->fetch_assoc()) {
 
         <h4>SCHEDULE</h4>
 
-        <a href="calendar.html">
+        <a href="calendar.php">
           <i class="fa-solid fa-calendar"></i>
           Shared Calendar
         </a>

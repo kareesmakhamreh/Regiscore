@@ -112,7 +112,7 @@ $courses = $conn->query("SELECT * FROM courses ORDER BY FIELD(category,'Universi
 
         <h4>SCHEDULE</h4>
 
-        <a href="calendar.html">
+        <a href="calendar.php">
           <i class="fa-solid fa-calendar"></i>
           Shared Calendar
         </a>
