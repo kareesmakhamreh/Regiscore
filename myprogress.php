@@ -171,7 +171,7 @@ while ($course = $allRes->fetch_assoc()) {
 
         <h4>MAIN</h4>
 
-        <a href="home.html">
+        <a href="home.php">
           <i class="fa-solid fa-house"></i>
           Dashboard
         </a>

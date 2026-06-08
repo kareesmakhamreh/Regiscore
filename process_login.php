@@ -10,7 +10,7 @@ if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
     if (password_verify($_POST['password'], $user['password'])) {
         $_SESSION['student_id'] = $user['student_id'];
-        header("Location: home.html"); exit();
+        header("Location: home.php"); exit();
     }
 }
 header("Location: login.php"); exit();
