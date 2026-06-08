@@ -144,6 +144,11 @@ while ($row = $res->fetch_assoc()) {
           Formative Sessions
         </a>
 
+        <a href="schedule.php">
+          <i class="fa-solid fa-calendar-plus"></i>
+          Schedule Builder
+        </a>
+
       </div>
 
       <!-- OTHER -->

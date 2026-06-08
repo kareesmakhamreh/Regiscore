@@ -183,6 +183,11 @@ while ($row = $rres->fetch_assoc()) { $recent[] = $row; }
           Formative Sessions
         </a>
 
+        <a href="schedule.php">
+          <i class="fa-solid fa-calendar-plus"></i>
+          Schedule Builder
+        </a>
+
       </div>
 
       <!-- OTHER -->

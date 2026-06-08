@@ -122,6 +122,11 @@ $courses = $conn->query("SELECT * FROM courses ORDER BY FIELD(category,'Universi
           Formative Sessions
         </a>
 
+        <a href="schedule.php">
+          <i class="fa-solid fa-calendar-plus"></i>
+          Schedule Builder
+        </a>
+
       </div>
 
       <!-- OTHER -->
