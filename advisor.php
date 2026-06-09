@@ -1,3 +1,11 @@
+<?php
+require "includes/auth_check.php";
+require "config/database.php";
+$id = $_SESSION['student_id'];
+$stmt = $conn->prepare("SELECT students.*, majors.major_name FROM students JOIN majors ON students.major_id = majors.major_id WHERE student_id = ?");
+$stmt->bind_param("s", $id); $stmt->execute();
+$student = $stmt->get_result()->fetch_assoc();
+?>
 <!-- REGISTRATION ADVISOR PAGE -->
 
 <!DOCTYPE html>
@@ -35,11 +43,11 @@
 
         <div class="student-info">
 
-          <h2>Sarah Ahmad</h2>
+          <h2><?= htmlspecialchars($student['first_name'] . " " . $student['last_name']) ?></h2>
 
-          <p>Computer Science</p>
+          <p><?= htmlspecialchars($student['major_name']) ?></p>
 
-          <span>3rd Year</span>
+          <span><?= htmlspecialchars($student['year_level']) ?></span>
 
         </div>
 
@@ -61,7 +69,7 @@
           My Progress
         </a>
 
-        <a href="advisor.html" class="active-link">
+        <a href="advisor.php" class="active-link">
           <i class="fa-solid fa-robot"></i>
           Registration Advisor
         </a>

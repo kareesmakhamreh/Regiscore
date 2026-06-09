@@ -17,6 +17,19 @@ if (isset($_SESSION['student_id'])) {
         $context = "Student: {$s['first_name']}, GPA {$s['gpa']}, {$s['credits_completed']} credits completed. "
                  . "Completed courses: " . (implode(", ", $done) ?: "none") . ".";
     }
+    $conn->query("CREATE TABLE IF NOT EXISTS schedule_selections (id INT AUTO_INCREMENT PRIMARY KEY, student_id VARCHAR(20), section_id INT)");
+    $schedStmt = $conn->prepare("SELECT c.name, s.section_number, s.days, s.start_time, s.end_time, s.instructor
+       FROM schedule_selections ss JOIN sections s ON ss.section_id = s.id JOIN courses c ON s.course_code = c.code
+       WHERE ss.student_id = ?");
+    $schedStmt->bind_param("s", $_SESSION['student_id']); $schedStmt->execute();
+    $schedRes = $schedStmt->get_result();
+    $planned = [];
+    while ($pr = $schedRes->fetch_assoc()) {
+       $planned[] = $pr['name']." (Section ".$pr['section_number'].", ".$pr['days']." ".$pr['start_time']."-".$pr['end_time'].", ".$pr['instructor'].")";
+    }
+    if (!empty($planned)) {
+       $context .= "\n\nCourses the student has CURRENTLY SELECTED in their schedule builder for the upcoming semester: " . implode("; ", $planned) . ". If they ask about their planned/selected schedule or to generate one, use these and their completed courses; do not ask them to list courses again.";
+    }
 }
 $curriculum = <<<'CURRICULUM'
 HTU COMPUTER SCIENCE — OFFICIAL BSc PROGRAM (School of Computing and Informatics)

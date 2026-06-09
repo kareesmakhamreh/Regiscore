@@ -91,7 +91,7 @@ $courses = $conn->query("SELECT * FROM courses ORDER BY FIELD(category,'Universi
           My Progress
         </a>
 
-        <a href="advisor.html">
+        <a href="advisor.php">
           <i class="fa-solid fa-robot"></i>
           Registration Advisor
         </a>

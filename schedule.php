@@ -47,6 +47,13 @@ while ($row = $secRes->fetch_assoc()) {
     ];
 }
 
+$conn->query("CREATE TABLE IF NOT EXISTS schedule_selections (id INT AUTO_INCREMENT PRIMARY KEY, student_id VARCHAR(20), section_id INT)");
+$savedStmt = $conn->prepare("SELECT section_id FROM schedule_selections WHERE student_id = ?");
+$savedStmt->bind_param("s", $_SESSION['student_id']); $savedStmt->execute();
+$savedRes = $savedStmt->get_result();
+$savedIds = [];
+while ($row = $savedRes->fetch_assoc()) { $savedIds[] = (int)$row['section_id']; }
+
 ?>
 <!-- SCHEDULE BUILDER PAGE -->
 
@@ -122,7 +129,7 @@ while ($row = $secRes->fetch_assoc()) {
           My Progress
         </a>
 
-        <a href="advisor.html">
+        <a href="advisor.php">
           <i class="fa-solid fa-robot"></i>
           Registration Advisor
         </a>
@@ -214,6 +221,9 @@ while ($row = $secRes->fetch_assoc()) {
 
         <div class="main-alert"><span id="conflictTotal">0</span> Conflicts</div>
 
+        <button class="red-btn" onclick="saveSchedule()">Save Schedule</button>
+        <span id="saveStatus" style="margin-left:10px; font-size:13px; color:#15803d;"></span>
+
       </div>
 
     </div>
@@ -254,6 +264,7 @@ while ($row = $secRes->fetch_assoc()) {
 
 <script>
   const COURSES = <?php echo json_encode(array_values($coursesArr)); ?>;
+  const SAVED = <?php echo json_encode($savedIds); ?>;
 </script>
 
 <script>
@@ -417,6 +428,25 @@ while ($row = $secRes->fetch_assoc()) {
     list.forEach(item => credits += item.course.credits);
     document.getElementById("creditTotal").textContent = credits;
     document.getElementById("conflictTotal").textContent = conflicting.size;
+  }
+
+  // Initialize from any previously saved selection
+  SAVED.forEach(id => {
+    const course = COURSES.find(c => c.sections.some(s => s.id === id));
+    if (course) selected[course.code] = id;
+  });
+
+  async function saveSchedule() {
+    const ids = Object.values(selected);
+    const s = document.getElementById('saveStatus');
+    s.textContent = 'Saving...';
+    try {
+      const r = await fetch('save_schedule.php', { method:'POST',
+        headers:{'Content-Type':'application/json'}, body: JSON.stringify({ sections: ids }) });
+      const d = await r.json();
+      s.textContent = d.ok ? ('Saved ✓ (' + d.count + ' courses)') : 'Save failed';
+    } catch (e) { s.textContent = 'Save failed'; }
+    setTimeout(() => { s.textContent = ''; }, 4000);
   }
 
   render();

@@ -113,7 +113,7 @@ while ($row = $res->fetch_assoc()) {
           My Progress
         </a>
 
-        <a href="advisor.html">
+        <a href="advisor.php">
           <i class="fa-solid fa-robot"></i>
           Registration Advisor
         </a>
