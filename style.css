@@ -277,7 +277,10 @@ button:hover,
 
   border-right: 1px solid var(--border);
 
-  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 /* PROFILE */
