@@ -39,6 +39,11 @@
 
       </form>
 
+      <p style="margin-top:16px; font-size:13px; color:#666; text-align:center; line-height:1.6;">
+        Demo account<br>
+        <strong>Student ID:</strong> 202201245 &nbsp;·&nbsp; <strong>Password:</strong> test123
+      </p>
+
     </div>
 
     <!-- BOTTOM SECTION -->
