@@ -18,8 +18,8 @@ CREATE TABLE completed_courses (
 );
 INSERT INTO majors (major_name) VALUES ('Computer Science');
 INSERT INTO students (student_id, first_name, last_name, email, password, major_id, year_level, gpa, credits_completed)
-VALUES ('202201245', 'Sarah', 'Ahmad', 'sarah@htu.edu.jo', '$2y$10$Bl0JTRpMjXBqT70/vlEhbe2BiG/LDEdj1kqG7gDU7UHxa.VeKsmwq', 1, '3rd Year', 3.42, 78);
+VALUES ('202201245', 'Rahaf', '', 'sarah@htu.edu.jo', '$2y$10$Bl0JTRpMjXBqT70/vlEhbe2BiG/LDEdj1kqG7gDU7UHxa.VeKsmwq', 1, '3rd Year', 3.42, 78);
 INSERT INTO completed_courses (student_id, course_name, grade, credits) VALUES
-('202201245', 'Programming I', 'A', 3),
-('202201245', 'Database Systems', 'B+', 3),
-('202201245', 'Software Engineering', 'A-', 3);
+('202201245', 'Programming I', 'P', 3),
+('202201245', 'Database Systems', 'M', 3),
+('202201245', 'Software Engineering', 'D', 3);
