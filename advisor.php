@@ -442,9 +442,48 @@ $student = $stmt->get_result()->fetch_assoc();
   const input = document.querySelector(".chat-input-area input");
   const sendBtn = document.querySelector(".chat-input-area button");
   const chatBody = document.querySelector(".chat-body");
+  function escapeHtml(s) {
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function inlineMd(s) {
+    return s
+      .replace(/`([^`]+)`/g, "<code>$1</code>")
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>");
+  }
+  function renderMarkdown(md) {
+    const lines = escapeHtml(md).split("\n");
+    let html = "", inList = false, listTag = "ul";
+    const closeList = () => { if (inList) { html += "</" + listTag + ">"; inList = false; } };
+    for (const line of lines) {
+      const ol = line.match(/^\s*\d+\.\s+(.*)$/);
+      const ul = line.match(/^\s*[-*]\s+(.*)$/);
+      const h  = line.match(/^\s*#{1,6}\s+(.*)$/);
+      if (ol) {
+        if (!inList || listTag !== "ol") { closeList(); html += '<ol style="margin:6px 0; padding-left:22px;">'; inList = true; listTag = "ol"; }
+        html += "<li>" + inlineMd(ol[1]) + "</li>";
+      } else if (ul) {
+        if (!inList || listTag !== "ul") { closeList(); html += '<ul style="margin:6px 0; padding-left:22px;">'; inList = true; listTag = "ul"; }
+        html += "<li>" + inlineMd(ul[1]) + "</li>";
+      } else if (h) {
+        closeList(); html += "<strong>" + inlineMd(h[1]) + "</strong><br>";
+      } else if (line.trim() === "") {
+        closeList(); html += "<br>";
+      } else {
+        closeList(); html += inlineMd(line) + "<br>";
+      }
+    }
+    closeList();
+    return html;
+  }
   function addMessage(text, cls) {
     const div = document.createElement("div");
-    div.className = cls; div.textContent = text;
+    div.className = cls;
+    if (cls === "bot-message") {
+      div.innerHTML = renderMarkdown(text);
+    } else {
+      div.textContent = text;
+    }
     chatBody.appendChild(div); chatBody.scrollTop = chatBody.scrollHeight;
   }
   async function send() {
